@@ -1,12 +1,5 @@
-*.py[coCO]
-*.sw?
-.todo.*
-*.pickle
-*.png
-*.tiff
-*.tif
-*.ppm
-*.raw
-*.txt
-*.bmp
-*.parameters
+# file types to ignore
+*.pyc
+*.pyd
+*.so
+*~
