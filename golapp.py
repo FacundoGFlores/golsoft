@@ -34,7 +34,7 @@ class Golapp(HasTraits):
             Item(name='extradata', style='custom')
         ),
         label='Datos Extra',
-        show_border = True
+        show_border=True
     )
 
     view = View(

@@ -13,10 +13,14 @@ from traitsui.api import Group, View, Handler
 
 from ..controllers.extradata import ExtradataHandler
 
+
 class Extradata_model(HasTraits):
+    """ ModelView para el manejo de datos extra de los hologramas:
+        Camaras y Wavelength
+    """
     hnd_extra = ExtradataHandler()
     camera = hnd_extra.load_cameras()
-    
+
     grp_extradata = Group(
         "camera"
     )

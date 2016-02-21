@@ -6,15 +6,11 @@
 # Licencia: GNU/GPL V3 http://www.gnu.org/copyleft/gpl.html
 # Estado: Produccion
 
-from traits.api import Bool, Str, Color, Float, Int, List
-from traits.api import HasTraits, Button, File, Range, Enum, Instance, Dict
-from traitsui.api import View, Item, Group, HSplit, VSplit, HGroup, VGroup
+from traits.api import HasTraits, Button, File
+from traitsui.api import View, Item, Group
 from traitsui.api import Handler
 
 from ..controllers.datainput import DatainputHandler
-
-CAM_PATH = "data/cameras.ini"
-WAV_PATH = "data/wavelengths.ini"
 
 
 class Datainput_model(HasTraits):
