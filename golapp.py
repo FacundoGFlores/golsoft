@@ -38,8 +38,10 @@ class Golapp(HasTraits):
     )
 
     view = View(
-        grp_datainput,
-        grp_extradata,
+        Group(
+            grp_datainput,
+            grp_extradata
+        ),
         title='Golsoft App v2',
         resizable=True,
     )
