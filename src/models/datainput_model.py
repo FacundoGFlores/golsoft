@@ -6,8 +6,6 @@
 # Licencia: GNU/GPL V3 http://www.gnu.org/copyleft/gpl.html
 # Estado: Produccion
 
-from ConfigParser import ConfigParser
-
 from traits.api import Bool, Str, Color, Float, Int, List
 from traits.api import HasTraits, Button, File, Range, Enum, Instance, Dict
 from traitsui.api import View, Item, Group, HSplit, VSplit, HGroup, VGroup
@@ -41,7 +39,7 @@ class Datainput_model(HasTraits):
         show_border=True,
     )
 
-    datainput_view = View(
+    view_datainput = View(
         grp_datainput,
         handler=DatainputHandler
     )
