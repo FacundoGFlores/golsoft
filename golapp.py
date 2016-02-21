@@ -18,7 +18,7 @@ class Golapp(HasTraits):
     """
     datainput = Instance(Datainput_model)
 
-    datainput_grp = Group(
+    grp_datainput = Group(
         Group(
             Item(name='datainput', style='custom'),
             show_labels=False
