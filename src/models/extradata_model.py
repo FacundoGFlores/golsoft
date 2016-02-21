@@ -8,8 +8,8 @@
 
 from ConfigParser import ConfigParser
 
-from traits.api import HasTraits, Instance
-from traitsui.api import Group, View, Handler
+from traits.api import Color, HasTraits, Int, Instance, Range
+from traitsui.api import Group, HGroup, Handler, Item, View
 
 from ..controllers.extradata import ExtradataHandler
 
@@ -20,9 +20,21 @@ class Extradata_model(HasTraits):
     """
     hnd_extra = ExtradataHandler()
     camera = hnd_extra.load_cameras()
+    wavelength = hnd_extra.load_wavelengths()
+    wavelength_nm = Range(400., 750., 650., mode="xslider", enter_set=True,
+        auto_set=False)
+    imagecolor = Color("(0,0,0)")
+    imagewavelength = Int(0)
 
     grp_extradata = Group(
-        "camera"
+        "camera",
+        HGroup(
+            Item("imagecolor", style='readonly', label="Color Dominante"),
+            Item("imagewavelength", style="readonly",
+                label="Wavelength dominante"),
+        ),
+        "wavelength",
+        "wavelength_nm"
     )
 
     view_extradata = View(

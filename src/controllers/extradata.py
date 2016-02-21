@@ -11,6 +11,9 @@ from ConfigParser import ConfigParser
 from traits.api import Enum
 from traitsui.api import Handler
 
+CAM_PATH = 'data/cameras.ini'
+WAV_PATH = 'data/wavelengths.ini'
+
 
 class ExtradataHandler(Handler):
     """ Controlador para el ModelView: Extradata
@@ -21,7 +24,7 @@ class ExtradataHandler(Handler):
     def load_cameras(self):
         cp = ConfigParser()
         try:
-            with open('data/cameras.ini') as cam_file:
+            with open(CAM_PATH) as cam_file:
                 cp.readfp(cam_file)
         except IOError:
             print "Error leyendo el archivo de camaras"
@@ -32,3 +35,18 @@ class ExtradataHandler(Handler):
             return Enum(cameras.keys(), label="Camera")
         else:
             return Enum("No hay camaras disponibles", label="Camera")
+
+    def load_wavelengths(self):
+        cp = ConfigParser()
+        try:
+            with open(WAV_PATH) as cam_file:
+                cp.readfp(cam_file)
+        except IOError:
+            print "Error leyendo el archivo de wavelengths"
+        wavelengths = dict(cp.items("Wavelengths"))
+        if wavelengths:
+            wavelengths = ["Custom"] + [
+                "%s - %s" % (w, k) for k, w in wavelengths.items()]
+            return Enum(wavelengths, label="Wavelength")
+        else:
+            return Enum("No hay wavelengths disponibles", label="Wavelengths")
