@@ -23,7 +23,7 @@ class Golapp(HasTraits):
             Item(name='datainput', style='custom'),
             show_labels=False
         ),
-        label='Data',
+        label='Datos de Entrada',
         show_border=True
     )
     view = View(

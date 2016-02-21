@@ -21,19 +21,8 @@ WAV_PATH = "data/wavelengths.ini"
 
 class Datainput_model(HasTraits):
     """ ModelView para el manejo de datos de los hologramas:
-        1- Imagenes
-        2- Camara
-        3- Wavelength Predefinidos
+        Archivos de imagenes.
     """
-    # Datos
-    imagecolor = Color("(0,0,0)")
-    imagewavelength = Int(0)
-    wavelength_nm = Range(
-        400., 750., 650.,
-        mode="xslider",
-        enter_set=True,
-        auto_set=False
-    )
     # Files
     holo_filename = File()
     ref_filename = File()
@@ -44,33 +33,11 @@ class Datainput_model(HasTraits):
     btn_save_parameters = Button("Guardar")
     # Groups
     grp_datainput = Group(
-        Item('holo_filename', label="Hologram"),
-        Item('obj_filename', label="Object"),
-        Item('ref_filename', label="Reference"),
+        Item('holo_filename', label="Holograma"),
+        Item('obj_filename', label="Objecto"),
+        Item('ref_filename', label="Referencia"),
         Item("btn_update_hologram", show_label=False),
-        HGroup(
-            Item(
-                "imagecolor",
-                style='readonly',
-                label="Dominant color"
-            ),
-            Item(
-                "imagewavelength",
-                style="readonly",
-                label="Dominant wavelength"
-            ),
-        ),
-        HGroup(
-            Item(
-                "btn_save_parameters",
-                label="Parametros"
-            ),
-            Item(
-                "btn_load_parameters",
-                show_label=False
-            )
-        ),
-        label="Input file",
+        label="Archivos de Entrada",
         show_border=True,
     )
 
@@ -78,7 +45,6 @@ class Datainput_model(HasTraits):
         grp_datainput,
         handler=DatainputHandler
     )
-
 
 if __name__ == '__main__':
     m = DataInput_Model()
